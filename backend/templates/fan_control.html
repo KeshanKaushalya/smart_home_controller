@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<video autoplay muted loop playsinline id="bg-video-fan">
+    <source src="{% static 'media/SHome intro.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<div class="fan-control-bg">
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="fan-title">Fan Control</h1>
+            <div class="camera-container mb-4">
+                <img src="{% url 'video_feed' %}" width="640" height="480" class="img-fluid">
+            </div>
+            
+            <div class="card fan-glass-card">
+                <div class="card-body">
+                    <h5 class="card-title">Manual Controls</h5>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <button id="powerBtn" class="btn btn-{% if fan_settings.is_on %}success{% else %}danger{% endif %}">
+                            {% if fan_settings.is_on %}ON{% else %}OFF{% endif %}
+                        </button>
+                        <span id="speedValue">{{ fan_settings.speed }}</span>
+                    </div>
+                    <input type="range" class="form-range" id="speedSlider" min="0" max="255" 
+                           value="{{ fan_settings.speed }}" {% if not fan_settings.is_on %}disabled{% endif %}>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card fan-glass-card">
+                <div class="card-body">
+                    <h5 class="card-title">Gesture Instructions</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <strong>Turn On:</strong> Show specific gesture (from your code)
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Turn Off:</strong> Show specific gesture (from your code)
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Speed Up:</strong> Show specific gesture
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Speed Down:</strong> Show specific gesture
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            {% if not arduino_connected %}
+            <div class="alert alert-warning mt-3">
+                Arduino is not connected. Controls will not work.
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="{% static 'css/fan_control.css' %}">
+<script src="{% static 'js/fancontrol.js' %}"></script>
+{% endblock %}
+
+{% block scripts %}
+<script>
+$(document).ready(function() {
+    // Power button toggle
+    $('#powerBtn').click(function() {
+        $.post("{% url 'toggle_power' %}", {
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        }, function(data) {
+            if (data.status === 'success') {
+                const isOn = data.is_on;
+                $('#powerBtn')
+                    .toggleClass('btn-danger btn-success')
+                    .text(isOn ? 'ON' : 'OFF');
+                $('#speedSlider').prop('disabled', !isOn);
+            }
+        });
+    });
+    
+    // Speed slider
+    $('#speedSlider').on('input', function() {
+        $('#speedValue').text($(this).val());
+    }).on('change', function() {
+        $.post("{% url 'update_speed' %}", {
+            speed: $(this).val(),
+            csrfmiddlewaretoken: '{{ csrf_token }}'
+        });
+    });
+
+    // Add real-time gesture feedback
+    const socket = new WebSocket(`ws://${window.location.host}/ws/fan/`);
+    socket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        if (data.gesture) {
+            document.getElementById('gesture-feedback').innerText = 
+                `Detected: ${data.gesture}`;
+        }
+    };
+});
+</script>
+{% endblock %}
