@@ -1,0 +1,35 @@
+.custom-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.card {
+    border-radius: 1rem;
+    background: rgba(255,255,255,0.95);
+}
+
+body {
+    background: #f8f9fa;
+}
+
+.register-bg {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 1rem;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    padding: 2rem 1.5rem;
+}
+
+.register-card .card-title {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
