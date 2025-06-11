@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.contact-bg {
+    min-height: 100vh;
+    background: url('../media/SH1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Lato', Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-card {
+    background: rgba(255,255,255,0.82);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.18);
+    backdrop-filter: blur(7px);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: #222;
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    padding: 2.5rem 2.2rem;
+    animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) both;
+}
+
+.contact-title {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 2.3rem;
+    color: #1976d2;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 1.2rem;
+    animation: fadeInDown 1s both;
+}
+
+.contact-form label {
+    font-family: 'Lato', Arial, sans-serif;
+    font-weight: 600;
+    color: #1976d2;
+}
+
+.contact-form .form-control {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-top: 0.2rem;
+}
+
+.contact-btn {
+    background: linear-gradient(90deg, #1976d2 0%, #64b5f6 100%);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 1.1rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #64b5f688;
+    transition: background 0.2s, box-shadow 0.2s;
+    margin-top: 0.5rem;
+}
+
+.contact-btn:hover {
+    background: linear-gradient(90deg, #64b5f6 0%, #1976d2 100%);
+    box-shadow: 0 4px 16px #1976d288;
+}
+
+.contact-extra {
+    color: #1976d2;
+    font-family: 'Lato', Arial, sans-serif;
+    text-align: center;
+}
+
+.about-contact-link {
+    color: #00bcd4;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.animated-fade-in {
+    opacity: 0;
+    animation: fadeIn 1.2s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeInUp {
+    0% { opacity: 0; transform: translateY(40px);}
+    100% { opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-40px);}
+    100% { opacity: 1; transform: translateY(0);}
+}
+
+@media (max-width: 600px) {
+    .contact-card {
+        padding: 1.2rem 0.5rem;
+        max-width: 98vw;
+    }
+    .contact-title {
+        font-size: 1.3rem;
+    }
+}
