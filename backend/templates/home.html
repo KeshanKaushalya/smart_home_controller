@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Update your video tag in home.html -->
+<video autoplay muted loop playsinline id="bg-video">
+    <source src="{% static 'media/SHome intro.mp4' %}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<div class="container-fluid d-flex justify-content-center align-items-center home-content animated-fade-in" style="min-height:100vh;">
+    <div>
+        <h1 class="home-title animated-title">Welcome to <span class="highlight">Smart Home System</span></h1>
+        <div class="slogan arial-slogan mb-4">
+            <strong>Smart Living, Smarter Future</strong>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card glass-card">
+                    <div class="card-body">
+                        <h5 class="card-title">System Status</h5>
+                        <p class="card-text">
+                            {% if user.is_authenticated %}
+                                <strong>You are logged in as <span class="username-highlight">{{ user.username }}</span></strong>
+                            {% else %}
+                                <strong>Please <a href="{% url 'login' %}" class="login-link">login</a> to access controls</strong>
+                            {% endif %}
+                        </p>
+                        <div class="d-flex justify-content-center">
+                            <a href="{% url 'fan_control' %}" class="btn btn-primary btn-animated">
+                                <strong>Go to Fan Control</strong>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add extra vertical space for scrolling -->
+<div style="height: 90px;"></div>
+
+<!-- Smart Home Features Section -->
+<section class="container smart-features-section mb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="features-area p-4 rounded shadow-lg glass-card">
+                <h2 class="features-title mb-3">Why Choose a Smart Home?</h2>
+                <div class="form-control features-textarea" rows="6" readonly>
+• Remote control of lights, fans, and appliances from anywhere<br>
+• Real-time monitoring and security alerts<br>
+• Energy efficiency and cost savings<br>
+• Automated schedules for comfort and <br>
+• Voice assistant integration (Alexa, Google Home)<br>
+• Customizable scenes and routines<br>
+• Easy expansion with new smart devices
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<script src="{% static 'js/home.js' %}"></script>
+
+<footer class="footer mt-auto py-3 smart-footer">
+    <div class="container text-center footer-main">
+        <div class="row">
+            <div class="col-md-4 footer-section">
+                <div class="footer-title">Custom Care</div>
+                <div class="footer-text">For support, call <a href="tel:+94112223344">+94 112 223344</a><br>
+                or email <a href="mailto:care@smarthome.com">care@smarthome.com</a></div>
+            </div>
+            <div class="col-md-4 footer-section">
+                <div class="footer-title">Our Company</div>
+                <div class="footer-text">Smart Home System (Pvt) Ltd<br>
+                123, Main Street, Colombo, Sri Lanka</div>
+            </div>
+            <div class="col-md-4 footer-section">
+                <div class="footer-title">Follow Us</div>
+                <div class="footer-social">
+                    <a href="https://facebook.com" target="_blank" class="footer-social-link" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="https://twitter.com" target="_blank" class="footer-social-link" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="https://instagram.com" target="_blank" class="footer-social-link" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                    <a href="https://linkedin.com" target="_blank" class="footer-social-link" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <span>COPYRIGHT@GAL/IT/2022/F/0107</span>
+    </div>
+</footer>
+{% endblock %}
