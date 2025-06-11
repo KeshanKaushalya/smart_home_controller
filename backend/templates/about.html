@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="about-bg">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="about-card animated-fade-in shadow-lg">
+                    <div class="card-body">
+                        <h2 class="about-title mb-4">About Us</h2>
+                        <p class="about-text mb-4">
+                            Welcome to <span class="about-highlight">Smart Home System</span> – your gateway to a smarter, safer, and more comfortable living experience.<br><br>
+                            Our platform empowers you to control your home’s fans, lights, and sound with ease, from anywhere, at any time. Enjoy real-time monitoring, energy savings, and seamless integration with your favorite voice assistants.<br><br>
+                            <span class="about-features-title">Key Features:</span>
+                        </p>
+                        <ul class="about-features-list mb-4">
+                            <li>Unified control for fans, lights, and sound</li>
+                            <li>Live camera feed & instant alerts</li>
+                            <li>Personalized schedules & automation</li>
+                            <li>Secure user authentication</li>
+                            <li>Modern, responsive design</li>
+                        </ul>
+                        <div class="about-contact">
+                            <strong>Need help?</strong> <span class="about-contact-link">Contact our support team anytime.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<script src="{% static 'js/about.js' %}"></script>
+{% endblock %}
