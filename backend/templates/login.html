@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="login-bg" style="background-image: url('{% static 'media/SH3.jpg' %}');">
+    <div>
+        <h1 class="login-main-title mb-4" style="font-family: 'Lato', sans-serif;">Welcome to <span class="login-highlight">Smart Home</span></h1>
+        <div class="login-card">
+            <h2 class="login-title">Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group mb-3">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+            <a href="{% url 'register' %}" class="login-link">Don't have an account? Register</a>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+<script src="{% static 'js/login.js' %}"></script>
+{% endblock %}
