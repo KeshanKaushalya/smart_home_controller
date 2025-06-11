@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+.register-bg {
+    min-height: 100vh;
+    background: url('../media/SH1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Lato', Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-main-title {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #1976d2;
+    text-align: center;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 12px #fff, 0 0 8px #1976d2aa;
+    margin-bottom: 1.5rem;
+}
+
+.register-highlight {
+    color: #00bcd4;
+    text-shadow: 0 2px 12px #00e6e6aa, 0 0 8px #fff;
+    font-family: 'Lato', Arial, sans-serif;
+}
+
+.register-card {
+    background: rgba(255,255,255,0.72);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,0.12);
+    backdrop-filter: blur(7px);
+    border: 1px solid rgba(255,255,255,0.10);
+    color: #222;
+    margin: 0 auto;
+    max-width: 400px;
+    width: 100%;
+    padding: 2.2rem 2rem;
+}
+
+.register-title {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 2rem;
+    color: #1976d2;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+}
+
+.register-btn {
+    background: linear-gradient(90deg, #1976d2 0%, #64b5f6 100%);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 1.1rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px #64b5f688;
+    transition: background 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+.register-btn:hover {
+    background: linear-gradient(90deg, #64b5f6 0%, #1976d2 100%);
+    box-shadow: 0 4px 16px #1976d288;
+}
+
+.register-link {
+    color: #1976d2;
+    text-decoration: underline;
+    font-size: 1rem;
+    display: block;
+    text-align: center;
+    margin-top: 1rem;
+    font-family: 'Lato', Arial, sans-serif;
+}
+
+.form-group label {
+    font-family: 'Lato', Arial, sans-serif;
+    font-weight: 600;
+    color: #1976d2;
+}
+
+.form-control {
+    font-family: 'Lato', Arial, sans-serif;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin-top: 0.2rem;
+}
+
+@media (max-width: 600px) {
+    .register-card {
+        padding: 1.2rem 0.5rem;
+        max-width: 98vw;
+    }
+    .register-main-title {
+        font-size: 1.4rem;
+    }
+}
