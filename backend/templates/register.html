@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="register-bg">
+    <div>
+        <h1 class="register-main-title mb-4">Create Your <span class="register-highlight">Smart Home</span> Account</h1>
+        <div class="register-card">
+            <h2 class="register-title">Register</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="register-btn">Register</button>
+            </form>
+            <a href="{% url 'login' %}" class="register-link">Already have an account? Login</a>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock %}
