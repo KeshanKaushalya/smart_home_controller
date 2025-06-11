@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="contact-bg">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="contact-card animated-fade-in shadow-lg">
+                    <div class="card-body">
+                        <h2 class="contact-title mb-4">Contact Us</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Your Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Type your message here..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn contact-btn w-100">Send Message</button>
+                        </form>
+                        <hr>
+                        <p class="contact-extra mt-3 mb-0">
+                            Or email us at <a href="mailto:info@smarthome.com" class="about-contact-link">info@smarthome.com</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Thank you modal -->
+<div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content" style="border-radius:16px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="thankYouModalLabel">Thank You!</h5>
+      </div>
+      <div class="modal-body text-center">
+        Your message has been sent successfully.<br>We will get back to you soon.
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+<script src="{% static 'js/contact.js' %}"></script>
+{% endblock %}
