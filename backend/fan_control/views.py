@@ -32,7 +32,7 @@ speed = 155    # Current speed
 arduino_connected = False
 arduino = None
 try:
-    arduino = serial.Serial(port='COM4', baudrate=9600, timeout=1, write_timeout=2)
+    arduino = serial.Serial(port='COM3', baudrate=9600, timeout=1, write_timeout=2)
     time.sleep(2)  # Wait for connection to establish
     arduino_connected = True
 except Exception as e:
@@ -359,7 +359,7 @@ def gen_frames():
 
                 elif speed_up(handLms, img_shape):
                     current_gesture = "Medium Speed"
-                    cv2.putText(img, str('Medium Speed'), (10, 70), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 223, 0), 2)
+                    cv2.putText(img, str('Increase Speed'), (10, 70), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 223, 0), 2)
                     if arduino_connected:
                         try:
                             arduino.write(b'3')
@@ -367,6 +367,8 @@ def gen_frames():
                                 speed = increase_speed()
                                 arduino.write(str(speed).encode())
                                 print("=========================================")
+                                if speed == 255:
+                                    current_gesture = "Max Speed"
                                 print(current_gesture)
                                 print(f"Sent {speed} to Arduino")
 
