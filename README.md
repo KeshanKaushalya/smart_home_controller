@@ -1,57 +1,169 @@
-# 🏠 Smart Home Controller with Django 🚀
+# 🖐️💨 Hand Gesture Fan Controller
 
-A **web-based smart home automation system** that lets you control devices remotely through a centralized dashboard. Built with Django for secure, scalable home automation.
+Welcome to the **Hand Gesture Fan Controller**—an innovative smart home project that lets you control a fan with nothing but hand gestures! This system fuses computer vision, web technologies, and hardware integration to create a futuristic and accessible smart fan experience.
 
-![Dashboard Preview](https://via.placeholder.com/800x400?text=Smart+Home+Dashboard+Preview) *(Replace with your actual screenshot)*
+---
 
-## 📋 Table of Contents
-- [Overview](#-overview)
-- [Key Features](#-key-features)
-- [Technology Stack](#-technology-stack)
-- [System Architecture](#-system-architecture)
-- [Installation](#-installation)
-- [Configuration](#-configuration)
-- [Usage](#-usage)
-- [API Endpoints](#-api-endpoints) *(if applicable)*
-- [Future Enhancements](#-future-enhancements)
-- [Contributing](#-contributing)
-- [License](#-license)
+## 📚 Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Live Demo](#live-demo)
+- [How It Works](#how-it-works)
+- [Gesture Controls](#gesture-controls)
+- [System Architecture](#system-architecture)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Future Enhancements](#future-enhancements)
+- [License](#license)
+
+---
 
 ## 🌟 Overview
-Control all your smart devices from **one secure dashboard**! This Django project provides:
-- 👨‍💻 User authentication (Admin/Regular Users)
-- 📱 Responsive web interface
-- 🔌 Virtual device control (easily extendable to real IoT devices)
-- ⚡ Real-time status updates
 
-*(Include 1-2 sentences about what inspired your project)*
+This project enables you to toggle a fan **ON/OFF** and adjust its speed using simple hand gestures in front of your camera. The system uses computer vision to recognize gestures and communicates with an Arduino-based fan controller, providing real-time feedback via a web dashboard.
 
-## ✨ Key Features
-| Feature | Description |
-|---------|-------------|
-| 🔒 Role-based Access | Admins can add/manage devices, users get control access |
-| 🖥️ Dashboard UI | Clean interface to view/control all connected devices |
-| 🏃 Real-time Control | Instant device toggle (lights, fans, etc.) |
-| 📅 Automation Rules | Schedule device actions (e.g., "Turn off at midnight") |
-| 📊 Device Logging | Track device usage history |
+**Why?**
+- Improve accessibility for everyone, especially for those with limited mobility.
+- Add a futuristic touch to home automation!
+- Learn and showcase the power of computer vision and IoT integration.
 
-## 🛠️ Technology Stack
-**Backend**:
-- 🐍 Python 3.x
-- 🎸 Django 4.x
-- 🗃️ SQLite (Production-ready for PostgreSQL)
+---
 
-**Frontend**:
-- 🌐 HTML5, CSS3, JavaScript
-- 🎨 Bootstrap 5 *(if used)*
+## 🚀 Features
 
-**APIs**:
-- RESTful endpoints for device control *(if implemented)*
+| Feature            | Description                                                                                  |
+|--------------------|----------------------------------------------------------------------------------------------|
+| 🤖 Gesture Control | Use intuitive hand gestures to power the fan and control its speed.                          |
+| 🌐 Web Dashboard   | Modern dashboard to view status, control the fan, and see gesture feedback in real-time.     |
+| 🔁 Real-Time Sync  | Instant updates on the dashboard when gestures are detected or fan state changes.            |
+| 🔌 Arduino Ready   | Easily interfaces with an Arduino for reliable physical fan control.                         |
+| ⚡ Speed Slider    | Manually adjust fan speed via the web UI (synchronized with gesture input).                  |
+| 🛡️ Error Handling  | Detects Arduino connection issues and provides user feedback.                                |
+| 📊 Logging (Planned) | Log fan usage and gesture events for analytics.                                            |
+
+---
+
+## 🎥 Live Demo
+
+*Coming Soon!* (Or add your GIF/video here.)
+
+---
+
+## 🧠 How It Works
+
+1. **Hand Detection:**  
+   A webcam captures your hand gestures using OpenCV and MediaPipe.
+
+2. **Gesture Recognition:**  
+   The backend analyzes finger positions to interpret gestures such as "Turn On", "Turn Off", "Speed Up", and "Speed Down".
+
+3. **Command Relay:**  
+   Detected gestures are sent to an Arduino over serial communication, which then controls the fan.
+
+4. **Web Dashboard:**  
+   A Django-powered dashboard displays the current state, lets you control the fan, and provides real-time feedback.
+
+---
+
+## ✋ Gesture Controls
+
+| Action        | Gesture Emoji | Description                       |
+|---------------|:------------:|-----------------------------------|
+| Turn On Fan   | 🤘           | Show "rock on" gesture            |
+| Turn Off Fan  | 🤚           | Show open palm                    |
+| Speed Up      | 👍           | Show thumbs up                    |
+| Speed Down    | 👎           | Show thumbs down                  |
+
+> **Tip:** The dashboard displays gesture instructions and real-time gesture feedback!
+
+---
 
 ## 🏗️ System Architecture
+
 ```mermaid
-graph LR
-    A[User Browser] --> B[Django Server]
-    B --> C[(Database)]
-    B --> D[Device Controller]
-    D --> E[Smart Devices]
+graph TD
+    A[User Hand Gesture] --> B[Webcam & CV Backend]
+    B --> C[Gesture Detection Logic]
+    C --> D[Django Web Server]
+    D -->|Serial| E[Arduino Board]
+    E --> F[Fan Hardware]
+    D --> G[Web Dashboard]
+    G --> H[User Feedback]
+```
+
+---
+
+## ⚙️ Installation
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/KeshanKaushalya/smart_home_controller.git
+   cd smart_home_controller
+   ```
+
+2. **Backend Setup**
+   - Ensure you have Python 3.x and pip.
+   - Install dependencies:
+     ```bash
+     pip install -r requirements.txt
+     ```
+   - (Optional) Set up a Python virtual environment.
+
+3. **Frontend**
+   - Static files are managed via Django; Bootstrap is used for styling.
+
+4. **Arduino**
+   - Load the provided Arduino sketch (in `/arduino/` if present) to your Arduino.
+   - Connect the Arduino to your computer via USB.
+
+---
+
+## ▶️ Usage
+
+1. **Start the Django Server:**
+   ```bash
+   python manage.py runserver
+   ```
+
+2. **Access the Dashboard:**
+   - Open `http://127.0.0.1:8000/` in your browser.
+
+3. **Use Hand Gestures:**
+   - Stand in front of your webcam and try the gestures listed above.
+   - Watch the fan respond in real-time!
+
+4. **Manual Control:**
+   - Use the dashboard buttons and speed slider for direct control.
+
+---
+
+## 🛠️ Technologies Used
+
+| Layer        | Tech Stack                              |
+|--------------|-----------------------------------------|
+| Backend      | Python, Django, OpenCV, MediaPipe       |
+| Frontend     | HTML5, CSS3, JavaScript, Bootstrap      |
+| Hardware     | Arduino Uno/Nano, DC Fan                |
+| Communication| Serial (pySerial)                       |
+
+---
+
+## 🚧 Future Enhancements
+
+- Add gesture customization and calibration.
+- Fan usage and gesture event logging.
+- Multi-device/room support.
+- Mobile-friendly dashboard.
+- Integration with voice assistants.
+
+---
+
+## 📄 License
+
+MIT License (or update if your project has a specific license).
+
+---
+
+> **Made with ❤️ by [KeshanKaushalya](https://github.com/KeshanKaushalya)**
