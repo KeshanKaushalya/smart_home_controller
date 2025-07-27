@@ -47,7 +47,7 @@ This project enables you to toggle a fan **ON/OFF** and adjust its speed using s
 
 ## 🎥 Live Demo
 
-*Coming Soon!* (Or add your GIF/video here.)
+*Coming Soon!* 
 
 ---
 
